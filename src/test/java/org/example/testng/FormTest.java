@@ -15,6 +15,16 @@ public class FormTest {
 
 
     static public String URL = "https://demoqa.com/";
+    static public String FIRST_NAME = "Madalina";
+    static public String LAST_NAME = "Codita";
+    static public String EMAIL = "madalinacodita71@gmail.com";
+    static public String NUMBER = "0604672285";
+    static public String DATE = "6 JAN 2007";
+    static public String SUBJECT = "Maths";
+    static public String HOBBIES = "Sports";
+    static public String STATE = "Rajasthan";
+    static public String CITY = "Jaipur";
+
 
 
     @BeforeMethod
@@ -29,11 +39,25 @@ public class FormTest {
         driver.get(URL);
         FormPom formPom = new FormPom(driver);
         formPom.clickForms();
-        System.out.println("Finih test");
+        formPom.pause(2000);
+        formPom.clickPracticeForm();
+        formPom.setFirstName(FIRST_NAME);
+        formPom.setLastName(LAST_NAME);
+        formPom.setEmail(EMAIL);
+        formPom.setNumber(NUMBER);
+        formPom.setDate(DATE);
+        formPom.setSubject(SUBJECT);
+        formPom.setHobbies(HOBBIES);
+        formPom.setState(STATE);
+        formPom.setCity(CITY);
+        formPom.pause(1000);
+        formPom.clickSubmit();
+        formPom.pause(2000);
+        System.out.println("Finish test");
     }
-
-    @AfterMethod
-    public void afterMethod(){
-        driver.quit();
-    }
+//
+//    @AfterMethod
+//    public void afterMethod(){
+//        driver.quit();
+//    }
 }
