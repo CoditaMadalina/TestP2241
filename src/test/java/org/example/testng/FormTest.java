@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.net.MalformedURLException;
 import java.sql.SQLOutput;
 
 public class FormTest {
@@ -30,8 +31,9 @@ public class FormTest {
 
 
     @BeforeMethod
-    public void beforeMethod(){
-        driver = Driver.getAutoLocalDriver();
+    public void beforeMethod() throws MalformedURLException {
+        //driver = Driver.getAutoLocalDriver();
+        driver = Driver.getRemoteDriver();
         driver.manage().window().maximize();
     }
 
