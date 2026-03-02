@@ -5,6 +5,9 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class FormPom {
 
@@ -53,12 +56,16 @@ public class FormPom {
         PageFactory.initElements(driver, this);
     }
 
-    public void clickForms(){
+    public void clickForms() {
+        closeAdvert();
+        scrollToElement(forms);
+        pause(1000);
         forms.click();
     }
 
     public void clickPracticeForm(){
         practiceForm.click();
+        closeAdvert();
     }
 
     public void setFirstName(String firstNameParam){
@@ -79,6 +86,16 @@ public class FormPom {
     public void setNumber(String numberParam){
         userNumber.clear();
         userNumber.sendKeys(numberParam);
+    }
+
+    public void setGender(String genderParam){
+        WebElement gender = driver.findElement(By.xpath("//*[@id='genterWrapper']//label[text()='" + genderParam + "']/../input"));
+        gender.click();
+    }
+
+    public String getTableData(String labelParam){
+        String value = driver.findElement(By.xpath("//table//*[text()='" + labelParam + "']/../*[2]")).getText();
+        return value;
     }
 
     public void setState(String stateParam){
