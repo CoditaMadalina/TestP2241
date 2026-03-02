@@ -67,7 +67,7 @@ public class FormPom {
         practiceForm.click();
         closeAdvert();
     }
-
+//schimbare
     public void setFirstName(String firstNameParam){
         firstName.clear();
         firstName.sendKeys(firstNameParam);
