@@ -60,6 +60,13 @@ jobs:
           name: report
           path: ./target/surefire-reports/html
 
+      - name: Uploading Allure results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: ./target/allure-results
+
       - name: Uploading video
         if: always()
         uses: actions/upload-artifact@v4
