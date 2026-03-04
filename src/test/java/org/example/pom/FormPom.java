@@ -48,8 +48,6 @@ public class FormPom {
     WebElement submit;
 
 
-
-
     public FormPom(WebDriver driverParam) {
         driver = driverParam;
         js=(JavascriptExecutor)driver;
@@ -67,7 +65,7 @@ public class FormPom {
         practiceForm.click();
         closeAdvert();
     }
-//schimbare
+
     public void setFirstName(String firstNameParam){
         firstName.clear();
         firstName.sendKeys(firstNameParam);
