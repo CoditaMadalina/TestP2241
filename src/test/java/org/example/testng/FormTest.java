@@ -1,5 +1,7 @@
 package org.example.testng;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.example.pom.FormPom;
 import org.example.utils.Driver;
 import org.openqa.selenium.WebDriver;
@@ -28,18 +30,18 @@ public class FormTest {
     static public String STATE = "Rajasthan";
     static public String CITY = "Jaipur";
 
-
+    private static final Logger logger = LogManager.getLogger(FormTest.class);
 
     @BeforeMethod
     public void beforeMethod() throws MalformedURLException {
-        driver = Driver.getAutoLocalDriver();
-        //driver = Driver.getRemoteDriver();
+        //driver = Driver.getAutoLocalDriver();
+        driver = Driver.getRemoteDriver();
         driver.manage().window().maximize();
     }
 
     @Test
     public void formTest(){
-        System.out.println("Start test");
+        logger.info("Start test");
         driver.get(URL);
         FormPom formPom = new FormPom(driver);
         formPom.closeAdvert();
@@ -49,15 +51,25 @@ public class FormTest {
         formPom.clickPracticeForm();
         formPom.pause(2000);
         formPom.setFirstName(FIRST_NAME);
+        logger.info("Set first name");
         formPom.setLastName(LAST_NAME);
+        logger.info("Set last name");
         formPom.setEmail(EMAIL);
+        logger.info("Set email");
         formPom.setGender(GENDER);
+        logger.info("Set gender");
         formPom.setNumber(NUMBER);
+        logger.info("Set number");
         formPom.setDate(DATE);
+        logger.info("Set DOB");
         formPom.setSubject(SUBJECT);
+        logger.info("Set subject");
         formPom.setHobbies(HOBBIES);
+        logger.info("Set hobbies");
         formPom.setState(STATE);
+        logger.info("Set state");
         formPom.setCity(CITY);
+        logger.info("Set city");
         formPom.pause(1000);
         formPom.clickSubmit();
         formPom.pause(5000);
@@ -78,6 +90,7 @@ public class FormTest {
 
     @AfterMethod
     public void afterMethod(){
+        logger.info("Start afterMethod");
         driver.quit();
     }
 }
